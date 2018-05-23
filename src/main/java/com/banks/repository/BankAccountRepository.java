@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by TEST on 23.05.2018.
  */
-public interface CheckRepository extends JpaRepository<BankAccount,Long>{
+public interface BankAccountRepository extends JpaRepository<BankAccount,Long>{
 }

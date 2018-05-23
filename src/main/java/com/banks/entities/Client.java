@@ -21,6 +21,8 @@ public class Client {
     private String name;
     private String address;
     private String age;
+
     @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
     private BankAccount bankAccounts;
+
 }
