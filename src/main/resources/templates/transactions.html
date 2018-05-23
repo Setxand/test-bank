@@ -40,11 +40,11 @@
 
             <div id = "tr-grid">
                 <h4>All transactions</h4>
-                <form action="/searchByName"  method="get">
+                <form action="/searchByName"  method="get" style="display: inline-block">
                     <input placeholder="search by name" type="text" id = "searchText" name="name"/>
-                    <button id="search">Search</button>
+                    <button type="submit" class="btn btn-default btn-lg btn-block" id="search" style="width: 150px">Search</button>
                 </form>
-            <table border="1" style="width:300px">
+            <table class="table" width="300px">
                 <tr>
                     <td>id</td>
                     <td>amount</td>
@@ -52,6 +52,7 @@
                     <td>sender</td>
                     <td>receiver</td>
                 </tr>
+
                 <tr th:each="transaction : ${transactions}">
                     <td>
                         <p th:text="${transaction.id}"></p>

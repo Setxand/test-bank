@@ -20,7 +20,10 @@ public class TestBank {
 
     @GetMapping("/searchByName")
     public String searchByName(@RequestParam("name") String name,Model model){
-        List<Transaction>transactions = transactionRepositoryService.findByName(name);
+        StringBuilder modName = new StringBuilder(name);
+        modName.setCharAt(0,Character.toUpperCase(modName.charAt(0)));
+
+        List<Transaction>transactions = transactionRepositoryService.findByName(modName.toString());
         model.addAttribute("transactions",transactions);
         return "transactions";
     }

@@ -25,4 +25,8 @@ public class Client {
     @OneToOne(mappedBy = "client",cascade = CascadeType.ALL)
     private BankAccount bankAccount;
 
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+        bankAccount.setClient(this);
+    }
 }
