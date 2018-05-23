@@ -28,7 +28,9 @@ public class ClientController {
 
     @GetMapping("/clients/{id}")
     public String clients(Model model, @PathVariable long id){
-        model.addAttribute("client", checkRepositoryService.findOne(id));
+        System.out.println(clientRepositoryService.findOne(id));
+        model.addAttribute("client", clientRepositoryService.findOne(id));
+
         return "clientInfo";
     }
 
