@@ -1,7 +1,7 @@
 package com.banks.services.reposiroryServices.impl;
 
 import com.banks.entities.BankAccount;
-import com.banks.repository.CheckRepository;
+import com.banks.repository.BankAccountRepository;
 import com.banks.services.reposiroryServices.CheckRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,24 +14,24 @@ import java.util.List;
 @Service
 public class CheckRepositoryServiceImpl implements CheckRepositoryService {
     @Autowired
-    private CheckRepository checkRepository;
+    private BankAccountRepository bankAccountRepository;
     @Override
     public List<BankAccount> findAll() {
-        return checkRepository.findAll();
+        return bankAccountRepository.findAll();
     }
 
     @Override
     public BankAccount findOne(Long id) {
-        return checkRepository.getOne(id);
+        return bankAccountRepository.getOne(id);
     }
 
     @Override
     public BankAccount saveAndFlush(BankAccount bankAccount) {
-        return checkRepository.saveAndFlush(bankAccount);
+        return bankAccountRepository.saveAndFlush(bankAccount);
     }
 
     @Override
     public void delete(BankAccount bankAccount) {
-        checkRepository.delete(bankAccount);
+        bankAccountRepository.delete(bankAccount);
     }
 }

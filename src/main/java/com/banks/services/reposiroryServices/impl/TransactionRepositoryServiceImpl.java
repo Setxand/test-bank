@@ -16,6 +16,12 @@ public class TransactionRepositoryServiceImpl implements TransactionRepositorySe
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Override
+    public List<Transaction> findByName(String name) {
+        return transactionRepository.findAllByName(name);
+    }
+
     @Override
     public List<Transaction> findAll() {
         return transactionRepository.findAll();

@@ -18,7 +18,7 @@ public class BankAccount {
     @GeneratedValue
     private Long id;
     private Integer amount;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "client_id")
     private Client client;
 }
