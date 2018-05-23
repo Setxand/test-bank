@@ -1,6 +1,6 @@
 package com.banks.services.reposiroryServices;
 
-import com.banks.entities.Check;
+import com.banks.entities.BankAccount;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import java.util.List;
  * Created by TEST on 23.05.2018.
  */
 public interface CheckRepositoryService {
-    List<Check>findAll();
-    Check findOne(Long id);
-    Check saveAndFlush(Check check);
-    void delete(Check check);
+    List<BankAccount>findAll();
+    BankAccount findOne(Long id);
+    BankAccount saveAndFlush(BankAccount bankAccount);
+    void delete(BankAccount bankAccount);
 }

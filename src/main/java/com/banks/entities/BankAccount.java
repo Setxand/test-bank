@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Check {
+public class BankAccount {
     @Id
     @GeneratedValue
     private Long id;

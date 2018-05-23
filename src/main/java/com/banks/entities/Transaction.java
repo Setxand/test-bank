@@ -19,8 +19,8 @@ public class Transaction {
     @Id
     @GeneratedValue
     private Long id;
-    private String from;
-    private String to;
+    private String sender;
+    private String receiver;
     private Integer amount;
     private String date;
 }

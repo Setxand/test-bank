@@ -23,6 +23,6 @@ public class Client {
     private String address;
     private String age;
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-    private List<Check>checks = new ArrayList<>();
+    private List<BankAccount> bankAccounts = new ArrayList<>();
 
 }
