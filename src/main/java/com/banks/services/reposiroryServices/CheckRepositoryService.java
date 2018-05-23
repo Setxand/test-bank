@@ -12,4 +12,5 @@ public interface CheckRepositoryService {
     BankAccount findOne(Long id);
     BankAccount saveAndFlush(BankAccount bankAccount);
     void delete(BankAccount bankAccount);
+
 }

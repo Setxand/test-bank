@@ -1,5 +1,6 @@
 package com.banks.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,9 +13,7 @@ import java.util.List;
  * Created by TEST on 23.05.2018.
  */
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class Client {
     @Id
     @GeneratedValue
@@ -22,7 +21,6 @@ public class Client {
     private String name;
     private String address;
     private String age;
-    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-    private List<BankAccount> bankAccounts = new ArrayList<>();
-
+    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
+    private BankAccount bankAccounts;
 }
