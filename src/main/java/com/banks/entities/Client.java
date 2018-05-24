@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,13 +17,13 @@ import java.util.List;
 @Data
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String address;
     private String age;
-
-    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private BankAccount bankAccounts;
-
 }

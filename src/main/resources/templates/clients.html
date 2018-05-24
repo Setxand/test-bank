@@ -8,10 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
-<table>
 <table class="table" width = "250">
-    <tbody>
-    <thead>
     <tr th:each="clientList : ${clientList}"
         th:onclick="'window.location.href = \'' +
         @{/clients/{id}(id=${clientList.getId()})} + '\''">
@@ -19,7 +16,11 @@
         <td th:scope="col" th:text="${clientList.getName()}"></td>
         <td th:scope="col" th:text="${clientList.getAddress()}"></td>
         <td th:scope="col" th:text="${clientList.getAge()}"></td>
-    </tbody>
+    </tr>
 </table>
+
+
+<a th:href= "@{'formClient'}" class="btn btn-success">
+    <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Новий клієнт</a>
 </body>
 </html>

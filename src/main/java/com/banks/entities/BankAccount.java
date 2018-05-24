@@ -1,9 +1,9 @@
 package com.banks.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jdk.nashorn.internal.objects.annotations.Constructor;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.mapping.ToOne;
 
 import javax.persistence.*;
 
@@ -18,6 +18,18 @@ public class BankAccount {
     private Long id;
     private Integer amount;
     @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @JoinColumn(name = "id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private Transaction transaction;
+
+    private String login;
+    private String password;
+
+    public BankAccount() {
+    }
+
+    public BankAccount(Integer amount) {
+        this.amount = amount;
+    }
+
 }

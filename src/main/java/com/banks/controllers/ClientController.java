@@ -1,5 +1,6 @@
 package com.banks.controllers;
 
+import com.banks.entities.BankAccount;
 import com.banks.entities.Client;
 import com.banks.services.reposiroryServices.CheckRepositoryService;
 import com.banks.services.reposiroryServices.ClientRepositoryService;
@@ -23,19 +24,26 @@ public class ClientController {
     @GetMapping("/clients")
     public String listClients(Model model){
         model.addAttribute("clientList",clientRepositoryService.findAll());
-        return "clients";
+        return "clients.html";
     }
 
     @GetMapping("/clients/{id}")
     public String clients(Model model, @PathVariable long id){
-        System.out.println(clientRepositoryService.findOne(id));
-        model.addAttribute("client", clientRepositoryService.findOne(id));
+        System.out.println(checkRepositoryService.findOne(id));
 
+        model.addAttribute("client", clientRepositoryService.findOne(id));
         return "clientInfo";
     }
 
+    @GetMapping("/formClient")
+    public String newClient(Model model){
+        model.addAttribute("client", new Client());
+        return "formClient";
+    }
+
     @PostMapping("/clientForm")
-    public String newClient(@ModelAttribute("client") Client client){
+    public String newClient(@ModelAttribute(value="сlient") Client client, Model model){
+        System.out.println(client);
         clientRepositoryService.saveAndFlush(client);
         return "redirect:clients";
     }
