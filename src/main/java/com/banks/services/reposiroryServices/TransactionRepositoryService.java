@@ -1,6 +1,5 @@
 package com.banks.services.reposiroryServices;
 
-import com.banks.entities.Client;
 import com.banks.entities.Transaction;
 
 import java.util.List;

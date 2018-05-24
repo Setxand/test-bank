@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by TEST on 23.05.2018.
@@ -13,12 +15,14 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BankAccount {
+public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private Integer amount;
-    @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    private String login;
+    private String password;
+    private String name;
+    private String lastName;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Card>cards;
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <title>User table</title>
+</head>
+<body>
+<div class="container">
+    <h3 style="text-align: center">Test bank</h3>
+
+    <div id = "tr-grid">
+        <h4>Users</h4>
+        <form action="/"  method="get" style="display: inline-block">
+            <input placeholder="search by name" type="text" id = "searchText" name="name"/>
+            <button type="submit" class="btn btn-default btn-lg btn-block" id="search" style="width: 150px">Search</button>
+        </form>
+        <table class="table" width="300px">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">name</td>
+                <th scope="col">Last name</td>
+                <th scope="col">user name</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td>
+                    <p th:text="${user.id}"></p>
+                </td>
+                <td>
+                    <p th:text="${user.name}"></p>
+                </td>
+                <td>
+                    <p th:text="${user.lastName}"></p>
+                </td>
+                <td>
+                    <p th:text="${user.login}"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/welcomePage"><button class="btn btn-default btn-lg btn-block">Return to pain page</button></a>
+
+    </div>
+</div>
+</body>
+</html>

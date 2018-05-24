@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-    <title>Transactions</title>
-    <style>
+                                                                                                 <title>Transactions</title>
+                                                                                                                      <style>
         tr-grid{
             margin-top: 20%;
         }
@@ -36,23 +36,25 @@
 </head>
     <body>
         <div class="container">
-            <h3 style="text-align: center">Transactions</h3>
+            <h3 style="text-align: center">Test bank</h3>
 
             <div id = "tr-grid">
-                <h4>All transactions</h4>
+                <h4>Transactions</h4>
                 <form action="/searchByName"  method="get" style="display: inline-block">
                     <input placeholder="search by name" type="text" id = "searchText" name="name"/>
                     <button type="submit" class="btn btn-default btn-lg btn-block" id="search" style="width: 150px">Search</button>
                 </form>
             <table class="table" width="300px">
+                <thead class="thead-light">
                 <tr>
-                    <td>id</td>
-                    <td>amount</td>
-                    <td>date</td>
-                    <td>sender</td>
-                    <td>receiver</td>
+                    <th scope="col">id</td>
+                    <th scope="col">amount</td>
+                    <th scope="col">date</td>
+                    <th scope="col">sender</td>
+                    <th scope="col">receiver</td>
                 </tr>
-
+                </thead>
+                <tbody>
                 <tr th:each="transaction : ${transactions}">
                     <td>
                         <p th:text="${transaction.id}"></p>
@@ -70,8 +72,11 @@
                         <p th:text="${transaction.receiver}"></p>
                     </td>
                 </tr>
+                </tbody>
             </table>
-        </div>
+                <a href="/welcomePage"><button class="btn btn-default btn-lg btn-block">Return to pain page</button></a>
+
+            </div>
         </div>
     </body>
 </html>
