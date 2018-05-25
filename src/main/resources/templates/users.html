@@ -8,6 +8,23 @@
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <title>User table</title>
 </head>
+<script th:inline="javascript">
+    $(document).ready(function () {
+
+        $("tbody tr").click(function(){
+            var x = document.getElementById("log").textContent;
+
+            window.location = "/transactions?name="+x;
+        });
+    })
+
+</script>
+<style>
+    tbody tr:hover{
+        cursor: pointer;
+        background-color: #F5F5DC;
+    }
+</style>
 <body>
 <div class="container">
     <h3 style="text-align: center">Test bank</h3>
@@ -28,7 +45,10 @@
             </tr>
             </thead>
             <tbody>
+
             <tr th:each="user : ${users}">
+
+
                 <td>
                     <p th:text="${user.id}"></p>
                 </td>
@@ -39,9 +59,11 @@
                     <p th:text="${user.lastName}"></p>
                 </td>
                 <td>
-                    <p th:text="${user.login}"></p>
+                    <p id="log" th:text="${user.login}"></p>
                 </td>
             </tr>
+
+
             </tbody>
         </table>
         <a href="/welcomePage"><button class="btn btn-default btn-lg btn-block">Return to pain page</button></a>
