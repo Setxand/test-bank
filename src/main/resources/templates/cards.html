@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <title>Cards</title>
+    <style>
+        tbody tr:hover{
+            cursor: pointer;
+            background-color: #F5F5DC;
+        }
+    </style>
+    <script th:inline="javascript">
+        $(document).ready(function () {
+
+            $("tbody tr").click(function(){
+                var x =$(this).find("#cardId").text();
+                window.location = "/cardDefinition?id="+x;
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h3 style="text-align: center">Test bank</h3>
+        <h4>User cards</h4>
+        <table class="table" width="300px">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">card id</td>
+                <th scope="col">amount</td>
+                <th scope="col">number</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="card : ${cards}">
+                <td>
+                    <p id = "cardId" th:inline="text">[[${card.id}]]</p>
+                </td>
+                <td>
+                    <p th:text="${card.amount}"></p>
+                </td>
+                <td>
+                    <p th:text="${card.number}"></p>
+                </td>
+
+                <td>
+                    <img src="https://cdn1.iconfinder.com/data/icons/credit-card-icons/512/visa.png "style="height: 40px; width: 60px" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/welcomePage"><button class="btn btn-default btn-lg btn-block">Return to login page</button></a>
+
+    </div>
+</body>
+</html>

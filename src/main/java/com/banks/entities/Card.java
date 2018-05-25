@@ -22,6 +22,7 @@ public class Card {
     @Column(unique = true)
     private String number;
     private String cvv;
+    private Integer amount;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

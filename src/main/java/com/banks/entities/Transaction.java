@@ -21,6 +21,7 @@ public class Transaction {
     private String receiver;
     private Integer amount;
     private String date;
+
     @ManyToOne
     @JoinColumn(name = "card_id")
     private Card card;

@@ -13,4 +13,5 @@ public interface UserRepositoryService {
     User saveAndFlush(User bankAccount);
     void delete(User bankAccount);
     User findByLogin(String login);
+    List<User>findByName(String name);
 }

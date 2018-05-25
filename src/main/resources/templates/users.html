@@ -8,30 +8,115 @@
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <title>User table</title>
 </head>
-<script th:inline="javascript">
+<script>
     $(document).ready(function () {
+        $("#addingClientForm").hide();
 
-        $("tbody tr").click(function(){
-            var x = document.getElementById("log").textContent;
+        $("#form-head p").click(function () {
+                $("#addingClientForm").hide();
+        })
 
-            window.location = "/transactions?name="+x;
+        $("#newClient").click(function () {
+            $("#addingClientForm").show();
+
+            $("#addingClientForm").animate({
+                left:"800"
+            },400,function () {
+
+            })
+        })
+
+            $("tbody tr").click(function(){
+            var x =$(this).find("#log").text();
+            window.location = "/searchByName?name="+x;
         });
+
+
+        $("#registerNewClient").click(function(){
+            var user = {
+                name:$("#nameInput").val(),
+                lastName:$("#lastNameInput").val(),
+                password:$("#passwordInput").val(),
+                login:$("#loginInput").val()
+            };
+
+            $.ajax({
+                method:'post',
+                data:JSON.stringify(user),
+                contentType: 'application/json',
+                dataType : 'json',
+                url:"/userRegister",
+                success:function (result) {
+                    if(result){
+                        window.location = "/successRegister";
+                    }
+                    else{
+                        window.location = "/error";
+
+                    }
+                }
+            });
+        });
+
     })
 
 </script>
 <style>
+
+    #form-head{
+        display: flex;
+        justify-content: space-between;
+    }
+    #addingClientForm{
+        background: #E6E6FA;
+        height:470px;
+        width:300px;
+        position: absolute;
+        float: left;
+    }
+
     tbody tr:hover{
         cursor: pointer;
         background-color: #F5F5DC;
     }
 </style>
 <body>
+<div id="addingClientForm">
+    <form>
+        <div id = "form-head">
+        <h3>New client adding</h3>
+        <p style="cursor: pointer">close</p>
+        </div>
+        <div class="form-group">
+            <label for="nameInput">User name</label>
+            <input type="text" class="form-control" id="loginInput"  placeholder="Enter user name">
+        </div>
+        <div class="form-group">
+            <label for="nameInput">Name</label>
+            <input type="text" class="form-control" id="nameInput"  placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="lastNameInput">Last name</label>
+            <input type="text" class="form-control" id="lastNameInput"  placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordArea" placeholder="Enter password">
+            <small id="passwordArea" class="form-text text-muted">We'll never share your password with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="repeatPassInput">Repeat password</label>
+            <input type="password" class="form-control" id="repeatPassInput"  placeholder="Enter password">
+        </div>
+        <button type="button" id="registerNewClient" class="btn btn-default btn-lg btn-block">Submit</button>
+    </form>
+</div>
 <div class="container">
     <h3 style="text-align: center">Test bank</h3>
 
     <div id = "tr-grid">
         <h4>Users</h4>
-        <form action="/"  method="get" style="display: inline-block">
+        <form action="/searchByRealName"  method="get" style="display: inline-block">
             <input placeholder="search by name" type="text" id = "searchText" name="name"/>
             <button type="submit" class="btn btn-default btn-lg btn-block" id="search" style="width: 150px">Search</button>
         </form>
@@ -50,7 +135,7 @@
 
 
                 <td>
-                    <p th:text="${user.id}"></p>
+                    <p th:inline="text">[[${user.id}]]</p>
                 </td>
                 <td>
                     <p th:text="${user.name}"></p>
@@ -59,13 +144,14 @@
                     <p th:text="${user.lastName}"></p>
                 </td>
                 <td>
-                    <p id="log" th:text="${user.login}"></p>
+                    <p id="log"  th:inline="text">[[${user.login}]]</p>
                 </td>
             </tr>
 
 
             </tbody>
         </table>
+        <button id="newClient" class="btn btn-default btn-lg btn-block">Add a new client</button>
         <a href="/welcomePage"><button class="btn btn-default btn-lg btn-block">Return to pain page</button></a>
 
     </div>

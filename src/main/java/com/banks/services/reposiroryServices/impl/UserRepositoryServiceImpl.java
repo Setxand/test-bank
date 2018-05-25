@@ -40,4 +40,9 @@ public class UserRepositoryServiceImpl implements UserRepositoryService {
     public User findByLogin(String login) {
         return userRepository.findByLogin(login);
     }
+
+    @Override
+    public List<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
 }
