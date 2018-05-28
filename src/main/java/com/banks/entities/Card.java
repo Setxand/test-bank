@@ -26,7 +26,7 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "card")
+    @OneToMany(mappedBy = "card", cascade = CascadeType.PERSIST)
     private List<Transaction>transactions = new ArrayList<>();
 
     public void addNewTransaction(Transaction transaction){

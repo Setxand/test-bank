@@ -1,6 +1,7 @@
 package com.banks.services.impll;
 
 import com.banks.entities.Card;
+import com.banks.entities.Transaction;
 import com.banks.entities.User;
 import com.banks.models.UserModel;
 import com.banks.services.SupportService;
@@ -44,6 +45,12 @@ public class SupportServiceImpl implements SupportService {
             Integer cvv = rand.nextInt(999) + 1;
             card.setCvv((cvv.toString()));
             user.addCard(card);
+            Transaction transaction = new Transaction();
+            transaction.setAmount(100);
+            transaction.setDate(new java.util.Date().toString());
+            transaction.setReceiver(user.getLogin());
+            transaction.setSender("Test bank");
+            card.addNewTransaction(transaction);
             userRepositoryService.saveAndFlush(user);
             return true;
         }
