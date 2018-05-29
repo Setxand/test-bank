@@ -12,5 +12,7 @@ public interface CheckRepositoryService {
     BankAccount findOne(Long id);
     BankAccount saveAndFlush(BankAccount bankAccount);
     void delete(BankAccount bankAccount);
-
+    List<Integer> getBankAccount(Long id);
+    BankAccount getOneBankAccount(Long id);
+    Integer allSumAccount(Long id);
 }

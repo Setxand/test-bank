@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
 </head>
 <body>
 <!--/*@thymesVar id="client" type="com.banks.entities.Client"*/-->
 <form action="#" th:action="@{/clientForm}" th:object="${client}" method="post">
-    <p>Id: <input type="text" th:field="*{id}"/></p>
-    <p>Id: <input type="text" th:field="*{name}"/></p>
-    <p>Message: <input type="text" th:field="*{address}" /></p>
-    <p>First Field: <input type="number" th:field="*{age}" /></p>
-
-    <p>First Field: <input type="text" th:field="*{bankAccounts.amount}"/></p>
-    <p><input type="submit" value="Submit" />
-        <input type="reset" value="Reset" /></p> </form>
+    <div class="form-group">
+        <p>Name: <input class="form-control" style="width: 300px"
+                        type="text" th:field="*{name}"/></p>
+        <p>Address: <input class="form-control" style="width: 300px"
+                           type="text" th:field="*{address}" /></p>
+        <p>Age: <input class="form-control" style="width: 300px"
+                       type="number" th:field="*{age}" /></p>
+        <p>Amount <input class="form-control" style="width: 300px"
+                         type="text" th:field="*{bankAccount.amount}"/></p>
+        <p><input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </p>
+    </div>
+</form>
 </body>
 </html>

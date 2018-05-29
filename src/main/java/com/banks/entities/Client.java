@@ -22,8 +22,10 @@ public class Client {
     private String name;
     private String address;
     private String age;
-    @OneToOne
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "id_bank")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private BankAccount bankAccounts;
+    private BankAccount bankAccount;
+
+    private Integer sum;
 }
