@@ -29,7 +29,13 @@ public class ClientController {
     @GetMapping("/clients")
     public String listClients(Model model){
         System.out.println(checkRepositoryService.allSumAccount(3L));
-
+        //for (Client client: clientRepositoryService.findAll()
+        //     ) {
+        //    System.out.println(client);
+        //    client.setSum(checkRepositoryService.allSumAccount(client.getId()));
+        //    if (client.getSum().equals(null))
+        //        ;
+        //}
         model.addAttribute("clientList", clientRepositoryService.findAll());
         return "clients";
     }
