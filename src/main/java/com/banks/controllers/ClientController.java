@@ -29,13 +29,16 @@ public class ClientController {
     @GetMapping("/clients")
     public String listClients(Model model){
         System.out.println(checkRepositoryService.allSumAccount(3L));
-        //for (Client client: clientRepositoryService.findAll()
-        //     ) {
-        //    System.out.println(client);
-        //    client.setSum(checkRepositoryService.allSumAccount(client.getId()));
-        //    if (client.getSum().equals(null))
-        //        ;
-        //}
+        for (Client client: clientRepositoryService.findAll()
+             ) {
+            System.out.println(client);
+            client.setSum(checkRepositoryService.allSumAccount(client.getId()));
+            System.out.println(client);
+            if (client.getSum().equals(null))
+                client.setSum(0);
+            System.out.println(client);
+            clientRepositoryService.saveAndFlush(client);
+        }
         model.addAttribute("clientList", clientRepositoryService.findAll());
         return "clients";
     }
